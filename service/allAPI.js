@@ -6,3 +6,9 @@ import BASEURL from "./serviceURL";
  export const addUserAPI=async(reqbody)=>{
     return await commonAPI("POST",`${BASEURL}/users`,reqbody)
  }
+ // get user
+export const getUserByEmailAPI = async (email) => {
+  return await commonAPI("GET", `${BASEURL}/users?email=${email}`, {});
+};
+
+

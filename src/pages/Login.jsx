@@ -1,9 +1,55 @@
-import React from 'react'
+import React, { useState } from "react";
 import { FaUserTie, FaLock } from "react-icons/fa";
+import { getUserByEmailAPI } from "../../service/allAPI";
 
 function Login() {
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = loginData;
+
+    // Validation
+    if (!email || !password) {
+      alert("Both email and password are required!");
+      return;
+    }
+
+    try {
+      // Get user by email from JSON Server
+      const res = await getUserByEmailAPI(email);
+
+      if (!res.data || res.data.length === 0) {
+        alert("User not found! Please register first.");
+        return;
+      }
+
+      const user = res.data[0];
+
+      // Compare password
+      if (user.password === password) {
+        alert(`Welcome back, ${user.name}! 🎉`);
+
+        // Optional: Save login session
+        // localStorage.setItem("user", JSON.stringify(user));
+
+        // Redirect to dashboard
+        window.location.href = "/";
+      } else {
+        alert("Incorrect password! Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Login failed! Please try again later.");
+    }
+  };
+
   return (
-    <> <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 p-4">
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
         {/* Header */}
         <div className="text-center mb-6">
@@ -15,30 +61,40 @@ function Login() {
         </div>
 
         {/* Login Form */}
-        <form  className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-600 mb-1 text-sm font-medium">Email</label>
+            <label className="block text-gray-600 mb-1 text-sm font-medium">
+              Email
+            </label>
             <div className="flex items-center border border-gray-300 rounded-xl p-3 bg-gray-50 focus-within:border-indigo-500">
               <FaUserTie className="text-gray-400 mr-2" />
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="w-full bg-transparent outline-none text-gray-700"
-            
+                value={loginData.email}
+                onChange={(e) =>
+                  setLoginData({ ...loginData, email: e.target.value })
+                }
                 required
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-gray-600 mb-1 text-sm font-medium">Password</label>
+            <label className="block text-gray-600 mb-1 text-sm font-medium">
+              Password
+            </label>
             <div className="flex items-center border border-gray-300 rounded-xl p-3 bg-gray-50 focus-within:border-indigo-500">
               <FaLock className="text-gray-400 mr-2" />
               <input
                 type="password"
                 placeholder="Enter your password"
                 className="w-full bg-transparent outline-none text-gray-700"
-                
+                value={loginData.password}
+                onChange={(e) =>
+                  setLoginData({ ...loginData, password: e.target.value })
+                }
                 required
               />
             </div>
@@ -51,19 +107,24 @@ function Login() {
             Login
           </button>
         </form>
-        {/*  */}
- <p className="text-center text-gray-500 text-sm mt-5">
-          Don't have an account{" "}
-          <span className="text-indigo-600 hover:underline cursor-pointer">Register</span>
-        </p>
-        {/* Footer */}
+
+        {/* Footer Links */}
         <p className="text-center text-gray-500 text-sm mt-5">
+          Don't have an account?{" "}
+          <span className="text-indigo-600 hover:underline cursor-pointer">
+            Register
+          </span>
+        </p>
+
+        <p className="text-center text-gray-500 text-sm mt-2">
           Forgot password?{" "}
-          <span className="text-indigo-600 hover:underline cursor-pointer">Reset here</span>
+          <span className="text-indigo-600 hover:underline cursor-pointer">
+            Reset here
+          </span>
         </p>
       </div>
-    </div></>
-  )
+    </div>
+  );
 }
 
-export default Login
+export default Login;

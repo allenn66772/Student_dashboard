@@ -31,6 +31,7 @@ function Signin() {
       const result = await addUserAPI(userData.userDetails);
       console.log(result);
       alert("Added successfully!");
+      window.location="/login";
     } catch (error) {
       console.error(error);
       alert("Something went wrong!");
