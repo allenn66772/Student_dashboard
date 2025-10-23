@@ -14,5 +14,8 @@ export const getUserByEmailAPI = async (email) => {
   export const addStudentAPI = async (reqbody)=>{
     return await commonAPI("POST",`${BASEURL}/studentdata`,reqbody)
   }
-
+// get studentdata API
+  export const getStudentAPI =async()=>{
+    return await commonAPI("GET",`${BASEURL}/studentdata`)
+  }
 

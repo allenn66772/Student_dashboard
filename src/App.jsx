@@ -9,6 +9,8 @@ import Signin from './pages/Signin'
 import Header from './componets/Header'
 import Footer from './componets/Footer'
 import AddStudent from './pages/AddStudent'
+import Attendence from './pages/Attendence'
+import AllStudents from './pages/AllStudents'
 
 function App() {
    
@@ -23,6 +25,8 @@ function App() {
       <Route path='login' element={<Login/>}/>
       <Route path='signin' element={<Signin/>}/>
       <Route path='addstudent' element={<AddStudent/>}/>
+      <Route path='attendence' element={<Attendence/>}/>
+      <Route path='allstudents' element={<AllStudents/>}/>
     </Routes>
    
     <Footer/>

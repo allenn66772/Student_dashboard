@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { FaUserTie, FaLock } from "react-icons/fa";
 import { getUserByEmailAPI } from "../../service/allAPI";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,9 +115,11 @@ function Login() {
         {/* Footer Links */}
         <p className="text-center text-gray-500 text-sm mt-5">
           Don't have an account?{" "}
-          <span className="text-indigo-600 hover:underline cursor-pointer">
-            Register
-          </span>
+          <Link to="/signin">
+            <span className="text-indigo-600 hover:underline cursor-pointer">
+              Register
+            </span>
+          </Link>
         </p>
 
         <p className="text-center text-gray-500 text-sm mt-2">

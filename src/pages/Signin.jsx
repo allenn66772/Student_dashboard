@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaUserTie, FaLock, FaEnvelope, FaUserPlus } from "react-icons/fa";
 import { addUserAPI } from "../../service/allAPI";
+import { Link } from "react-router-dom";
 
 function Signin() {
   const [userData, setuserData] = useState({
@@ -170,9 +171,11 @@ function Signin() {
 
         <p className="text-center text-gray-500 text-sm mt-5">
           Already have an account?{" "}
-          <span className="text-indigo-600 hover:underline cursor-pointer">
-            Login here
-          </span>
+          <Link to="/login">
+            <span className="text-indigo-600 hover:underline cursor-pointer">
+              Login here
+            </span>
+          </Link>
         </p>
       </div>
     </div>

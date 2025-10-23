@@ -1,7 +1,14 @@
 import React from 'react'
 import { FaUserTie } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function Header() {
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    alert("You have been logged out successfully!");
+    window.location.href = "/login";
+  };
   return (
     <>
         <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
@@ -15,19 +22,20 @@ function Header() {
 
       {/* Right: Nav Links */}
       <nav className="hidden md:flex items-center gap-6 text-gray-600 font-medium">
-        <a href="#" className="hover:text-indigo-600 transition">
+        <Link to="/" className="hover:text-indigo-600 transition">
           Dashboard
-        </a>
-        <a href="#" className="hover:text-indigo-600 transition">
+        </Link>
+        <Link to="/allstudents" className="hover:text-indigo-600 transition">
           Students
-        </a>
-        <a href="#" className="hover:text-indigo-600 transition">
-          Teachers
-        </a>
-        <a href="#" className="hover:text-indigo-600 transition">
+        </Link>
+         <Link to="/addstudent" className="hover:text-indigo-600 transition">
+          Add Student
+        </Link>
+       
+        <Link to="/attendence" className="hover:text-indigo-600 transition">
           Attendance
-        </a>
-        <button className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
+        </Link>
+        <button onClick={handleLogout} className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
           Logout
         </button>
       </nav>

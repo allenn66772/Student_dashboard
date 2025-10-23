@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../componets/Header";
+import {addStudentAPI} from '../../service/allAPI'
 
 function AddStudent() {
   const [studentData, setStudentData] = useState({
