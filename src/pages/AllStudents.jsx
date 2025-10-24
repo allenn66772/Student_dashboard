@@ -45,7 +45,9 @@ function AllStudents() {
                   <th className="px-6 py-3 border-b border-gray-200">Email</th>
                   <th className="px-6 py-3 border-b border-gray-200">Course</th>
                   <th className="px-6 py-3 border-b border-gray-200">Phone</th>
-                  <th className="px-6 py-3 border-b border-gray-200">Address</th>
+                  <th className="px-6 py-3 border-b border-gray-200">
+                    Address
+                  </th>
                   <th className="px-6 py-3 border-b border-gray-200 text-center">
                     Actions
                   </th>
@@ -63,7 +65,7 @@ function AllStudents() {
                       <td className="px-6 py-3 font-medium text-gray-800">
                         {student.name}
                       </td>
-                      <td className="px-6 py-3 text-gray-600">
+                      <td className="px-6 py-3 text-gray-600 truncate max-w-[150px]">
                         {student.email}
                       </td>
                       <td className="px-6 py-3 text-gray-600">
@@ -72,15 +74,18 @@ function AllStudents() {
                       <td className="px-6 py-3 text-gray-600">
                         {student.phone}
                       </td>
-                      <td className="px-6 py-3 text-gray-600">
+                      <td
+                        className="px-6 py-3 text-gray-600 truncate max-w-[150px]"
+                        title={student.address} // shows full text on hover
+                      >
                         {student.address}
                       </td>
                       <td className="px-6 py-3 text-center">
                         <button className="bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-md mr-2">
-                          Edit
+                          Update
                         </button>
                         <button className="bg-red-500 hover:bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-md">
-                          Delete
+                          Remove
                         </button>
                       </td>
                     </tr>
