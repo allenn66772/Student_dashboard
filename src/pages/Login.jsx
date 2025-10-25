@@ -43,7 +43,7 @@ function Login() {
         // localStorage.setItem("user", JSON.stringify(user));
 
         // Redirect to dashboard
-        window.location.href = "/";
+        window.location.href = "/home";
       } else {
         alert("Incorrect password! Please try again.");
       }
