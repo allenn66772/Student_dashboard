@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaUserGraduate, FaChalkboardTeacher, FaClipboardList, FaCalendarCheck } from "react-icons/fa";
 import Header from '../componets/Header';
+import Footer from '../componets/Footer';
+import { getStudentAPI } from '../../service/allAPI';
 
 function Home() {
+   const [studentData, setStudentData] = useState([]);
+
+    useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await getStudentAPI();
+        if (response.status === 200) {
+          setStudentData(response.data); // store student list
+        } else {
+          console.error("Failed to fetch students");
+        }
+      } catch (error) {
+        console.error("Error fetching student data:", error);
+      }
+    };
+
+    fetchStudents();
+  }, []);
   return (
     <>
     <Header/>
@@ -20,7 +40,7 @@ function Home() {
             <FaUserGraduate size={28} />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">1,245</h2>
+            <h2 className="text-xl font-semibold">{studentData.length}</h2>
             <p className="text-gray-500 text-sm">Total Students</p>
           </div>
         </div>
@@ -97,7 +117,7 @@ function Home() {
         </div>
       </section>
     </div>
-    
+    <Footer/>
     
     </>
   )

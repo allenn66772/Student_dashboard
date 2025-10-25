@@ -14,8 +14,25 @@ export const getUserByEmailAPI = async (email) => {
   export const addStudentAPI = async (reqbody)=>{
     return await commonAPI("POST",`${BASEURL}/studentdata`,reqbody)
   }
+// update StudentDAta APi
+ export const updateStudentAPI = async (id, reqbody) => {
+  return await commonAPI("PUT",`${BASEURL}/studentdata/${id}`, reqbody); // PUT or PATCH based on backend
+};
+
 // get studentdata API
   export const getStudentAPI =async()=>{
     return await commonAPI("GET",`${BASEURL}/studentdata`)
   }
+  //delete student data
+  export const deleteStudentDataAPI = async(id)=> {
+    return await commonAPI("delete",`${BASEURL}/studentdata/${id}`)
+}
+//post status attendance
+export const studentStatusAPI = async (id, updatedStudent) => {
+  return await commonAPI("PUT", `${BASEURL}/studentdata/${id}`, updatedStudent);
+};
+// add attendence status
+ export const addAttendenceAPI =async(reqbody)=>{
+  return await commonAPI("POST",`${BASEURL}/attendance/`,reqbody)
+ }
 

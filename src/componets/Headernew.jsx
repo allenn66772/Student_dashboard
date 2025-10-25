@@ -2,42 +2,31 @@ import React from 'react'
 import { FaUserTie } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Headernew() {
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    alert("You have been logged out successfully!");
-    window.location.href = "/login";
-  };
+
   return (
     <>
         <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
       {/* Left: Logo / Title */}
       <div className="flex items-center gap-2">
         <FaUserTie className="text-indigo-600 text-2xl" />
-        <h1 className="text-xl font-semibold text-indigo-600">
+        <h1 className="text-xl font-bold text-indigo-600">
           EduSphere
         </h1>
       </div>
 
       {/* Right: Nav Links */}
       <nav className="hidden md:flex items-center gap-6 text-gray-600 font-medium">
-        <Link to="/home" className="hover:text-indigo-600 transition">
-          Dashboard
-        </Link>
-        <Link to="/allstudents" className="hover:text-indigo-600 transition">
-          Students
-        </Link>
-         <Link to="/addstudent" className="hover:text-indigo-600 transition">
-          Add Student
-        </Link>
+        
        
-        <Link to="/attendence" className="hover:text-indigo-600 transition">
-          Attendance
+       
+        
+        <Link to="/login">
+            <button  className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
+              Login
+            </button>
         </Link>
-        <button onClick={handleLogout} className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
-          Logout
-        </button>
       </nav>
 
       {/* Mobile Menu Icon */}
@@ -63,4 +52,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Headernew

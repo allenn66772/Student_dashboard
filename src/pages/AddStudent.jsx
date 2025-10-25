@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../componets/Header";
 import {addStudentAPI} from '../../service/allAPI'
+import Footer from "../componets/Footer";
 
 function AddStudent() {
   const [studentData, setStudentData] = useState({
@@ -134,6 +135,7 @@ function AddStudent() {
           </form>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
