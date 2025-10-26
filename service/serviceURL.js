@@ -1,4 +1,4 @@
-const BASEURL ="https://student-dashboard-backend-a9al.onrender.com"
+const BASEURL ="https://student-dashboard-backend-fbbz.onrender.com"
 
 
 export default BASEURL
