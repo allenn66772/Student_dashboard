@@ -12,6 +12,8 @@ import AddStudent from './pages/AddStudent'
 import Attendence from './pages/Attendence'
 import AllStudents from './pages/AllStudents'
 import Landingpage from './pages/Landingpage'
+import Showattendance from './pages/Showattendance'
+
 
 function App() {
    
@@ -29,6 +31,7 @@ function App() {
       <Route path='/addstudent' element={<AddStudent/>}/>
       <Route path='/attendence' element={<Attendence/>}/>
       <Route path='/allstudents' element={<AllStudents/>}/>
+      <Route path='/attendcard' element={<Showattendance/>}/>
     </Routes>
    
    

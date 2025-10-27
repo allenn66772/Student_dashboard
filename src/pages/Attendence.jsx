@@ -6,7 +6,7 @@ import Footer from "../componets/Footer";
 function Attendence() {
   const [studentData, setStudentData] = useState([]);
   const [attendanceData, setAttendanceData] = useState({});
-  const [date, setDate] = useState(""); // date state
+  const [date, setDate] = useState("");
 
   const getAllData = async () => {
     try {
@@ -42,14 +42,17 @@ function Attendence() {
 
     const submitData = {
       date: date,
-      attendance: attendanceData
+      attendance: studentData.map(student => ({
+        id: student.id,
+        name: student.name,
+        status: attendanceData[student.id] || "Not Marked"
+      }))
     };
 
     try {
       const result = await addAttendenceAPI(submitData);
       console.log(result);
       alert("Attendance submitted successfully");
-
       setAttendanceData({});
       setDate("");
     } catch (error) {
@@ -75,9 +78,7 @@ function Attendence() {
 
           {/* Date Selector */}
           <div className="mb-6 flex justify-end items-center gap-3">
-            <label className="text-lg font-medium text-gray-700">
-              Select Date:
-            </label>
+            <label className="text-lg font-medium text-gray-700">Select Date:</label>
             <input
               type="date"
               className="border border-gray-400 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -118,7 +119,7 @@ function Attendence() {
                           }
                         >
                           <option value="">Select</option>
-                          <option  value="Present">Present</option>
+                          <option value="Present">Present</option>
                           <option value="Absent">Absent</option>
                         </select>
                       </td>
@@ -139,7 +140,6 @@ function Attendence() {
                   </tr>
                 )}
               </tbody>
-
             </table>
           </div>
 
@@ -155,7 +155,8 @@ function Attendence() {
 
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </>
   );
 }

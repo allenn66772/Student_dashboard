@@ -31,9 +31,11 @@ function Header() {
          <Link to="/addstudent" className="hover:text-indigo-600 transition">
           Add Student
         </Link>
-       
-        <Link to="/attendence" className="hover:text-indigo-600 transition">
-          Attendance
+       <Link to="/attendence" className="hover:text-indigo-600 transition">
+          Attendance 
+        </Link>
+        <Link to="/attendcard" className="hover:text-indigo-600 transition">
+          Attendance Status
         </Link>
         <button onClick={handleLogout} className="bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700 transition">
           Logout

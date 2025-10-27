@@ -35,4 +35,8 @@ export const studentStatusAPI = async (id, updatedStudent) => {
  export const addAttendenceAPI =async(reqbody)=>{
   return await commonAPI("POST",`${BASEURL}/attendance/`,reqbody)
  }
+ // get attendance status
+ export const getAttendanceAPI =async()=>{
+  return await commonAPI("GET",`${BASEURL}/attendance`)
+ }
 
