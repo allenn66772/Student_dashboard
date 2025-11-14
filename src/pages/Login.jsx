@@ -37,7 +37,7 @@ function Login() {
 
       // Compare password
       if (user.password === password) {
-        alert(`Welcome back, ${user.name}! 🎉`);
+        alert(`Welcome back, ${user.name}! `);
 
         // Optional: Save login session
         // localStorage.setItem("user", JSON.stringify(user));
